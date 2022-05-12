@@ -2,13 +2,15 @@
 pragma solidity ^0.8.0;
 
 import "@openzeppelin/contracts/access/Ownable.sol";
+import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
+import "./GovernanceToken.sol";
 
 contract Property is Ownable {
     //------------------------------- Storage Variable ----------------------------------
     //property manager: This is the address the manager is going to receive funds
     address public s_propertyManager;
 
-    uint256 public s_totalProjectFund;
+    uint256 public s_requiredProjectCapital;
 
     uint256 public s_requiredAmountToStartDevelopment;
 
@@ -24,10 +26,34 @@ contract Property is Ownable {
 
     uint256 public s_propertyDaoCustomToken; // Token minted for each time an individual stakes
 
-    uint256 public s_governanceToken; //The governance token associated with this app
+    // uint256 public s_governanceToken; 
 
+    IERC20 public s_stakingErc20Address;
+
+    address public s_governanceToken; //The governance token associated with this app
+
+
+    // constructor(uint256 _requiedProjectCapital,
+    //             address _governanceToken, 
+    //             address _stakingErc20Address){
+
+    //         // initialize funds needed to raise funds
+    //         s_requiredProjectCapital = _requiedProjectCapital;
+
+    //         // set acceptable governance token
+    //         GovernanceToken s_governanceToken = GovernanceToken(_governanceToken);
+
+    //         // set staking address
+    //         s_stakingErc20Address = IERC20(_stakingErc20Address);
+        
+    //     // set property listing expiry: It can be extended in block times: E.g
+    //     // 
+    // }
 
     //----------------------- Events ---------------------------
+    
+    //----------------------- Error  ---------------------------
+    
     //Property funds
     //property assets erc20 deposit or maybe eth deposit
     // - If deposit is in eth, convert to usdc using chainlink price feed contract

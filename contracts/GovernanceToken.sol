@@ -4,12 +4,13 @@
  import "@openzeppelin/contracts/token/ERC20/extensions/ERC20Votes.sol";
 
  contract GovernanceToken is ERC20Votes{
-     uint256 public s_maxSupply = 1000000000000000000000000;
+     uint256 public s_maxSupply;
 
-     constructor() 
+     constructor(uint256 _maxSupply) 
      ERC20("GovernanceToken" , "GT")
      ERC20Permit("GovernanceToken")
      {
+         s_maxSupply = _maxSupply;
          _mint(msg.sender, s_maxSupply);
      }
      

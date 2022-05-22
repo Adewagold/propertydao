@@ -2,8 +2,9 @@
  pragma solidity ^0.8.8;
 
  import "@openzeppelin/contracts/token/ERC20/extensions/ERC20Votes.sol";
+ import "@openzeppelin/contracts/access/Ownable.sol";
 
- contract GovernanceToken is ERC20Votes{
+ contract GovernanceToken is ERC20Votes, Ownable{
      uint256 public s_maxSupply;
 
      constructor(uint256 _maxSupply) 
